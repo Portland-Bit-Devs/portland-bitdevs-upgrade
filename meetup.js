@@ -3,7 +3,7 @@ Object.defineProperty(exports, '__esModule', { value: true })
 exports.meetup = void 0
 exports.meetup = {
   city: {
-    name: 'New',
+    name: 'Portland',
     position: 'left',
   },
   description:
