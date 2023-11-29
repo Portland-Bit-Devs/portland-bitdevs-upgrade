@@ -61,6 +61,10 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Upgrading
 
-If you fork this template for your own website, you may want to upgrade the template in the future if there are bug fixes, UX improvements, or new features. You can run `./upgrade.sh` from a CLI shell to upgrade, which will pull down the latest, but ignore content that ia unique to your site.
+If you fork this template for your own website, you may want to upgrade the template in the future if there 
+are bug fixes, UX improvements, or new features. You can run `./upgrade.sh` from a CLI shell to upgrade, which 
+will pull down the latest, but ignore content that ia unique to your site.
 
-However, this in't guaranteed to work properly. Before running upgrade.sh, make sure all your changes have been committed. Create a clean branch and run the update their. Check the changes that have been applied when you merge to ensure none of your unique content is overwritten.
+However, this isn't guaranteed to work properly. Before running upgrade.sh, make sure all your changes have 
+been committed. Create a clean branch and run the update their. Check the changes that have been applied when 
+you merge to ensure none of your unique content is overwritten.
