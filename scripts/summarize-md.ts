@@ -11,9 +11,10 @@ import { read, readFileSync } from 'fs'
   4. Create a new markdown file with the summaries.
 */
 const NYC_BITDEVS = 'https://github.com/BitDevsNYC/BitDevsNYC.github.io'
+const PDX_BITDEVS = 'https://github.com/Portland.BitDevs/Portland.BitDevs.github.io'
 
 const loadFromRepo = async () => {
-  const loader = new GithubRepoLoader(NYC_BITDEVS, {
+  const loader = new GithubRepoLoader(PDX_BITDEVS, {
     branch: 'main',
     recursive: false,
     unknown: 'warn',
