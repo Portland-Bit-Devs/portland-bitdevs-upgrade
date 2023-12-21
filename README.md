@@ -59,6 +59,14 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Run in Docker
+
+To run in Docker, run 2 commands:
+
+    docker build . -t bitdevs-site
+    docker-compose up
+
+
 ## Upgrading
 
 If you fork this template for your own website, you may want to upgrade the template in the future if there 

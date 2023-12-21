@@ -1,4 +1,3 @@
-## run with command:  docker build . -t bitdevs-site
 
 FROM node:18-alpine as build
 
