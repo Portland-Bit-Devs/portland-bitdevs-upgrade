@@ -33,7 +33,7 @@ exports.meetup = {
     },
     {
       text: 'Meetup',
-      link: 'https://www.meetup.com/BitDevsNYC/',
+      link: 'http://meetup.com/portlandbitdevs/',
     },
   ],
   image: '/new-bitdevs-default.jpg',
