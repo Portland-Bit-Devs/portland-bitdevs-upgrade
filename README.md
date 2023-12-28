@@ -19,11 +19,8 @@ This is a project to improve the UX of BitDevs websites and add AI generated sum
 
 ```
 cd ai
-
 # Make a .env file inside the ai directory and add your OPENAI_API_KEY
-
 yarn install
-
 yarn start
 ```
 
@@ -44,7 +41,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 First, run the development server.  You can use `npm run` for this, but when you build and run the site for deployment
-  you will use `yarn build` and `yarn start`.
+  you will use `yarn build` and `yarn start`.   NOTE: You need to create a `.env` file in project root, with the OpenAI and Github tokens.
 
 ```bash
 npm run dev
