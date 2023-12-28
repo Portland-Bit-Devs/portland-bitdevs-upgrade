@@ -43,7 +43,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, run the development server.  You can use `npm run` for this, but when you build and run the site for deployment
+  you will use `yarn build` and `yarn start`.
 
 ```bash
 npm run dev
@@ -60,6 +61,9 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Run in Docker
+
+The `Dockerfile` describes how the container is assembled and the project is built.   You might not deploy it this
+  way though, unless you own the server, since deploying live containers via SASS is the most expensive way to do it.
 
 To run in Docker, run 2 commands:
 
