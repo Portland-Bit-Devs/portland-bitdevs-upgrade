@@ -15,7 +15,7 @@ const Header = () => {
         <ul className="flex flex-row gap-4 font-semibold items-center">
           {meetup.mainNav.map((item) => (
             <li key={item.text} className="">
-              <a href={item.link} className="no-underline">
+              <a href={item.link} className="no-underline" target={item.text === 'Meetup' ? "_blank" : undefined}>
                 {item.text}
               </a>
             </li>
