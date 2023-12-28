@@ -6,8 +6,10 @@ COPY .env /app
 
 WORKDIR /app
 
+# run npm install but we wont run the build or serve with npm run
+RUN npm install
 RUN apk add yarn
-RUN npm install -g contentlayer
+
 RUN yarn install
 RUN yarn build
 
