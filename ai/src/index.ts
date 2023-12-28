@@ -10,8 +10,8 @@ import { meetup } from './meetup'
 
 dotenv.config()
 
-//const model = 'gpt-3.5-turbo-16k'
-const model = 'gpt-4-32k'
+const model = 'gpt-3.5-turbo-16k'
+//const model = 'gpt-4-32k'
 
 type Tasks = {
   initAi: {

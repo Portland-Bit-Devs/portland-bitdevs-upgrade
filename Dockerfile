@@ -1,13 +1,16 @@
 
 FROM node:18-alpine as build
 
+COPY . /app
+COPY .env /app
+
 WORKDIR /app
-COPY package.json package-lock.json ./
+
+RUN apk add yarn
 RUN npm install -g contentlayer
-RUN npm install
-COPY . .
-RUN npm run build
+RUN yarn install
+RUN yarn build
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["yarn", "start"]
