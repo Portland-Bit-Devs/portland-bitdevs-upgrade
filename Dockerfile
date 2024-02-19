@@ -6,13 +6,19 @@ COPY .env /app
 
 WORKDIR /app
 
-# run npm install but we wont run the build or serve with npm run
-RUN npm install
+## npm not necessary here
+#RUN npm install
+
 RUN apk add yarn
+RUN yarn add next react react-dom contentlayer
 
 RUN yarn install
-RUN yarn build
 
+# not sure if summarize should come after build
+RUN yarn build
+RUN yarn summarize
+
+# expose command doesn't really do anything, just to mark intentions here
 EXPOSE 3000
 
 CMD ["yarn", "start"]
