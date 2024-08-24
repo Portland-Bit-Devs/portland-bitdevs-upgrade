@@ -1,5 +1,5 @@
 
-FROM node:18-alpine as build
+FROM node:18-alpine as bitdevs-pdx
 
 COPY . /app
 COPY .env /app
