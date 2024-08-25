@@ -14,8 +14,6 @@ RUN apk add yarn
 RUN yarn add next react react-dom contentlayer
 
 RUN yarn install
-
-# not sure if summarize should come after build
 RUN yarn build
 RUN yarn summarize
 
