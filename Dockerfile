@@ -9,6 +9,7 @@ WORKDIR /app
 ## npm not necessary here
 #RUN npm install
 
+RUN npm install -g contentlayer next-contentlayer date-fns
 RUN apk add yarn
 RUN yarn add next react react-dom contentlayer
 
