@@ -6,9 +6,6 @@ COPY .env /app
 
 WORKDIR /app
 
-## npm not necessary here
-#RUN npm install
-
 RUN npm install -g next contentlayer next-contentlayer date-fns
 RUN npm install
 RUN apk add yarn
