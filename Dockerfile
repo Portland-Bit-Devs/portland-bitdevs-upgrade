@@ -19,6 +19,6 @@ RUN yarn build
 RUN yarn summarize
 
 # expose command doesn't really do anything, just to mark intentions here
-EXPOSE 3000
+EXPOSE 80
 
 CMD ["yarn", "start"]
