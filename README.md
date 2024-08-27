@@ -40,7 +40,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server.  You can use `npm run` for this, but when you build and run the site for deployment
+First, run the development server.  You can possibly use `npm run` for this, BUT when you build and run the site for deployment
   you will use `yarn build` and `yarn start`.   NOTE: You need to create a `.env` file in project root, with the OpenAI and Github tokens.
 
 ```bash
@@ -50,6 +50,8 @@ yarn dev
 # or
 pnpm dev
 ```
+
+See the `Dockerfile` in this project for exact broken down commands to compile and run the site.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -67,6 +69,25 @@ To run in Docker, run 2 commands:
     docker build . -t bitdevs-site
     docker-compose up
 
+## Publish Your Docker Image To Amazon ECR
+
+After creating a Amazon ECR container registry, click the "Show Push Commands" button on your registry to see the exact commands to authenticate to the registry.
+
+Keep in mind that if the command fails, you may need to put a `sudo` in the command to get it working.
+
+Once the image is published to the ECR, you can run a Amazon AMI image to run the docker image and host the site.
+
+When setting up your Docker AMI instance, you will need these commands to run the image:
+
+    ## in the GUI , change to us-west-2 Oregon region
+    
+    sudo yum update -y
+    sudo yum install docker -y
+    sudo usermod -a -G docker ec2-user  ## NOTE: this command might not actually work
+    aws ecr get-login-password --region us-west-2 | sudo docker login -u AWS --password-stdin ********.dkr.ecr.us-west-2.amazonaws.com/bitdevs-pdx
+    sudo docker pull ********.dkr.ecr.us-west-2.amazonaws.com/bitdevs-pdx
+    sudo docker run -d -p 80:3000 ********.dkr.ecr.us-west-2.amazonaws.com/bitdevs-pdx
+    
 
 ## Upgrading
 
