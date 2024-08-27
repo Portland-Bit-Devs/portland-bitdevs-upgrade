@@ -75,12 +75,11 @@ After creating a Amazon ECR container registry, click the "Show Push Commands" b
 
 Keep in mind that if the command fails, you may need to put a `sudo` in the command to get it working.
 
-Once the image is published to the ECR, you can run a Amazon AMI image to run the docker image and host the site.
+Once the image is published to the ECR, you can run a Amazon AMI image to run the docker image and host the site.    The commands below are for a Amazon AMI 2023 Linux image.
 
 When setting up your Docker AMI instance, you will need these commands to run the image:
 
     ## in the GUI , change to us-west-2 Oregon region
-    
     sudo yum update -y
     sudo yum install docker -y
     sudo usermod -a -G docker ec2-user  ## NOTE: this command might not actually work
