@@ -14,6 +14,7 @@ RUN yarn add next react react-dom contentlayer
 RUN yarn install
 RUN yarn build
 RUN yarn summarize
+RUN rm -f /app/.env
 
 # expose command doesn't really do anything, just to mark intentions here
 EXPOSE 80

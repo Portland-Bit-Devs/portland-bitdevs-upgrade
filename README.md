@@ -42,16 +42,19 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, run the development server.  You can possibly use `npm run` for this, BUT when you build and run the site for deployment
   you will use `yarn build` and `yarn start`.   NOTE: You need to create a `.env` file in project root, with the OpenAI and Github tokens.
+  Only need the Github token var if you are hooking to a Github action.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+yarn install
+yarn build
+yarn summarize
+
+docker build . -t djangofan/bitdevs-pdx
 ```
 
 See the `Dockerfile` in this project for exact broken down commands to compile and run the site.
+
+    yarn start
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -59,53 +62,32 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Run in Docker
+## Adding Pages To Content
+
+To add another Markdown page to this site, just copy a new .md file into the `app/content/events/` folder.
+
+Then rebuild the site and re-publish the container.
+
+    docker login
+    docker push djangofan/bitdevs-pdx:latest
+
+## (optional) Run in Docker Using Docker Compose
 
 The `Dockerfile` describes how the container is assembled and the project is built.   You might not deploy it this
   way though, unless you own the server, since deploying live containers via SASS is the most expensive way to do it.
 
 To run in Docker, run 2 commands:
 
+    docker login
     docker build . -t bitdevs-site
     docker-compose up
 
-## Publish Your Docker Image To Amazon ECR
+OR, do this
 
-After creating a Amazon ECR container registry, click the "Show Push Commands" button on your registry to see the exact commands to authenticate to the registry.
+    docker login
+    docker run -d -p 80:3000 djangofan/bitdevs:latest
 
-Keep in mind that if the command fails, you may need to put a `sudo` in the command to get it working.
+## Publish Image To Docker Hub
 
-Once the image is published to the ECR, you can run a Amazon AMI image to run the docker image and host the site.    The commands below are for a Amazon AMI 2023 Linux image.
+Periodically, need to update this repo, rebuild the code, then rebuild the container, and finally push the container to Docker Hub registry.
 
-When setting up your Docker image from your local development machine, you will need these commands to build the image and then publish it up to ECR:
-
-    sudo yum update -y
-    sudo yum install docker -y
-    sudo usermod -a -G docker ec2-user  ## NOTE: this command might not actually work
-    aws ecr get-login-password --region us-west-2 | sudo docker login -u AWS --password-stdin ********.dkr.ecr.us-west-2.amazonaws.com/bitdevs-pdx
-    sudo docker push ********.dkr.ecr.us-west-2.amazonaws.com/bitdevs-pdx
-
-When you create the Amazon 2023 AMI EC2 Linux instance, make sure you create a `default` security group.     After the instance is running, go into the `default` security group and allow port 80 incoming HTTP protocol to reach your machine.
-
-THEN, on the Amazon AMI EC2 instance:
-
-    ## in the GUI , change to us-west-2 Oregon region
-    sudo yum update -y
-    sudo yum install docker -y
-    sudo usermod -a -G docker ec2-user  ## NOTE: this command might not actually work
-    aws ecr get-login-password --region us-west-2 | sudo docker login -u AWS --password-stdin ********.dkr.ecr.us-west-2.amazonaws.com/bitdevs-pdx
-    sudo docker pull ********.dkr.ecr.us-west-2.amazonaws.com/bitdevs-pdx
-    sudo docker run -d -p 80:3000 ********.dkr.ecr.us-west-2.amazonaws.com/bitdevs-pdx
-    curl http://localhost:80 
-
-
-
-## Upgrading
-
-If you fork this template for your own website, you may want to upgrade the template in the future if there 
-are bug fixes, UX improvements, or new features. You can run `./upgrade.sh` from a CLI shell to upgrade, which 
-will pull down the latest, but ignore content that ia unique to your site.
-
-However, this isn't guaranteed to work properly. Before running upgrade.sh, make sure all your changes have 
-been committed. Create a clean branch and run the update their. Check the changes that have been applied when 
-you merge to ensure none of your unique content is overwritten.
